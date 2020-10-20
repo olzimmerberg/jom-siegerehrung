@@ -1,0 +1,148 @@
+html {
+    background: url(../img/wald.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.olvz-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.olvz-logo img {
+    width: 150px;
+    margin: 25px;
+}
+
+.olz-logo {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.olz-logo img {
+    width: 175px;
+    margin: 25px;
+}
+
+#countdown {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+#clock {
+    margin: auto auto;
+    font-size: 128px;
+    text-shadow: 0 0 10px white; 
+}
+
+#siegerehrung {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+
+.kat {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.kat h2 {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 48px;
+    text-shadow: 0 0 5px white; 
+}
+
+.podest {
+    position: relative;
+    width: 50%;
+}
+
+.podest .background {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    width: 800px;
+}
+
+.podest .first {
+    position: absolute;
+    bottom: 325px;
+    left: 305px;
+    width: 190px;
+}
+
+.podest .second {
+    position: absolute;
+    bottom: 225px;
+    left: 105px;
+    width: 190px;
+}
+
+.podest .third {
+    position: absolute;
+    bottom: 225px;
+    left: 505px;
+    width: 190px;
+}
+
+.boden {
+    position: relative;
+    width: 50%;
+}
+
+.boden .fourth {
+    position: absolute;
+    bottom: 125px;
+    left: 105px;
+    width: 190px;
+}
+
+.boden .fifth {
+    position: absolute;
+    bottom: 125px;
+    left: 305px;
+    width: 190px;
+}
+
+.boden .sixth {
+    position: absolute;
+    bottom: 125px;
+    left: 505px;
+    width: 190px;
+}
+
+audio {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+audio.inactive {
+    display: none;
+}
