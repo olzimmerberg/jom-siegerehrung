@@ -1,5 +1,5 @@
 // var START_TIME = '2020-10-25 16:00:00';
-var START_TIME = '2020-10-23 16:00:00'; // TODO: FIX
+var START_TIME = '2020-10-23 21:22:00'; // TODO: FIX
 
 var RANGLISTE = {
     "D10": [
