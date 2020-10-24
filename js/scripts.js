@@ -3,98 +3,99 @@ var START_TIME = '2020-10-23 21:22:00'; // TODO: FIX
 
 var RANGLISTE = {
     "D10": [
+        "user",
         "11xx-D10",
         "11xx-D10",
         "11xx-D10",
         "11xx-D10",
-        "11xx-D10",
-        "11xx-D10",
+        "user",
     ],
     "H10": [
+        "user",
         "11xx-H10",
         "11xx-H10",
         "11xx-H10",
         "11xx-H10",
-        "11xx-H10",
-        "11xx-H10",
+        "user",
     ],
     "D12": [
+        "user",
         "11xx-D12",
         "11xx-D12",
         "11xx-D12",
         "11xx-D12",
-        "11xx-D12",
-        "11xx-D12",
+        "user",
     ],
     "H12": [
+        "user",
         "11xx-H12",
         "11xx-H12",
         "11xx-H12",
         "11xx-H12",
-        "11xx-H12",
-        "11xx-H12",
+        "user",
     ],
     "D14": [
+        "user",
         "11xx-D14",
         "11xx-D14",
         "11xx-D14",
         "11xx-D14",
-        "11xx-D14",
-        "11xx-D14",
+        "user",
     ],
     "H14": [
+        "user",
         "11xx-H14",
         "11xx-H14",
         "11xx-H14",
         "11xx-H14",
-        "11xx-H14",
-        "11xx-H14",
+        "user",
     ],
     "D16": [
+        "user",
         "11xx-D16",
         "11xx-D16",
         "11xx-D16",
         "11xx-D16",
-        "11xx-D16",
-        "11xx-D16",
+        "user",
     ],
     "H16": [
+        "user",
         "11xx-H16",
         "11xx-H16",
         "11xx-H16",
         "11xx-H16",
-        "11xx-H16",
-        "11xx-H16",
+        "user",
     ],
     "D18": [
+        "user",
         "11xx-D18",
         "11xx-D18",
         "11xx-D18",
         "11xx-D18",
-        "11xx-D18",
-        "11xx-D18",
+        "user",
     ],
     "H18": [
+        "user",
         "11xx-H18",
         "11xx-H18",
         "11xx-H18",
         "11xx-H18",
-        "11xx-H18",
-        "11xx-H18",
+        "user",
     ],
 };
 
 var DATA_BY_ID = {
-    "11xx-D10": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-H10": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-D12": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-H12": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-D14": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-H14": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-D16": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-H16": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-D18": {"name": "Test User", "club": "OLG Muster"},
-    "11xx-H18": {"name": "Test User", "club": "OLG Muster"},
+    "user": {"name": "Testperson mit Bild", "club": "OLG Muster"},
+    "11xx-D10": {"name": "Testperson D10", "club": "OLG Muster"},
+    "11xx-H10": {"name": "Testperson H10", "club": "OLG Muster"},
+    "11xx-D12": {"name": "Testperson D12", "club": "OLG Muster"},
+    "11xx-H12": {"name": "Testperson H12", "club": "OLG Muster"},
+    "11xx-D14": {"name": "Testperson D14", "club": "OLG Muster"},
+    "11xx-H14": {"name": "Testperson H14", "club": "OLG Muster"},
+    "11xx-D16": {"name": "Testperson D16", "club": "OLG Muster"},
+    "11xx-H16": {"name": "Testperson H16", "club": "OLG Muster"},
+    "11xx-D18": {"name": "Testperson D18", "club": "OLG Muster"},
+    "11xx-H18": {"name": "Testperson H18", "club": "OLG Muster"},
 
     "1100-H10": {"name": "Matteo Schlienger", "club": "OLG Säuliamt"},
     "1100-H14": {"name": "Urs Truninger", "club": "OLG Schaffhausen"},
@@ -378,7 +379,11 @@ function fillInSiegerehrung() {
                 var nameElem = document.querySelector(`#${classElemSelector} .${ordinal}.name`);
                 var clubElem = document.querySelector(`#${classElemSelector} .${ordinal}.club`);
                 // console.log(`${classElemSelector} .${ordinal}.name`, nameElem, clubElem);
-                imgElem.src = `./img/portraits/${competitorId}.jpg`;
+                if (competitorId === 'user') {
+                    imgElem.src = `./img/portraits/user.png`;
+                } else {
+                    imgElem.src = `./img/portraits/${competitorId}.jpg`;
+                }
                 nameElem.innerHTML = competitorData.name;
                 clubElem.innerHTML = competitorData.club;
             }
@@ -401,6 +406,13 @@ function ehrClass(index) {
     }
     var classElemSelector = `kat-${className.toLowerCase()}`;
     document.querySelector(`#${classElemSelector}`).scrollIntoView({behavior: 'smooth'});
+    resetCompetitor(classElemSelector, 6);
+    resetCompetitor(classElemSelector, 5);
+    resetCompetitor(classElemSelector, 4);
+    resetCompetitor(classElemSelector, 3);
+    resetCompetitor(classElemSelector, 2);
+    resetCompetitor(classElemSelector, 1);
+    resetPokal(classElemSelector);
     timeouts.push(setTimeout(() => {
         fadeInCompetitor(classElemSelector, 6);
     }, 0));
@@ -437,6 +449,25 @@ function stopEhringClass() {
     timeouts = [];
 }
 
+function resetCompetitor(classElemSelector, rank) {
+    var ordinal = ORDINALS[rank - 1];
+    var imgElem = document.querySelector(`#${classElemSelector} .${ordinal}.img`);
+    var nameElem = document.querySelector(`#${classElemSelector} .${ordinal}.name`);
+    var clubElem = document.querySelector(`#${classElemSelector} .${ordinal}.club`);
+    imgElem.classList.add('notransition');
+    nameElem.classList.add('notransition');
+    clubElem.classList.add('notransition');
+    imgElem.style.opacity = 0;
+    nameElem.style.opacity = 0;
+    clubElem.style.opacity = 0;
+    imgElem.offsetHeight; // Trigger a reflow, flushing the CSS changes
+    nameElem.offsetHeight; // Trigger a reflow, flushing the CSS changes
+    clubElem.offsetHeight; // Trigger a reflow, flushing the CSS changes
+    imgElem.classList.remove('notransition');
+    nameElem.classList.remove('notransition');
+    clubElem.classList.remove('notransition');
+}
+
 function fadeInCompetitor(classElemSelector, rank) {
     var ordinal = ORDINALS[rank - 1];
     var imgElem = document.querySelector(`#${classElemSelector} .${ordinal}.img`);
@@ -447,13 +478,21 @@ function fadeInCompetitor(classElemSelector, rank) {
     clubElem.style.opacity = 1;
 }
 
-function fadeInPokal(classElemSelector) {
+function resetPokal(classElemSelector) {
     var imgElem = document.querySelector(`#${classElemSelector} .pokal`);
-    imgElem.style.opacity = 1;
+    imgElem.classList.add('notransition');
+    imgElem.style.opacity = 0;
     imgElem.style.bottom = '100px';
     imgElem.style.left = '50%';
     imgElem.style.width = '400px';
     imgElem.style.marginLeft = '-200px';
+    imgElem.offsetHeight; // Trigger a reflow, flushing the CSS changes
+    imgElem.classList.remove('notransition');
+}
+
+function fadeInPokal(classElemSelector) {
+    var imgElem = document.querySelector(`#${classElemSelector} .pokal`);
+    imgElem.style.opacity = 1;
 }
 
 function handOutPokal(classElemSelector) {
