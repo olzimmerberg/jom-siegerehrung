@@ -498,7 +498,7 @@ function fadeInPokal(classElemSelector) {
 function handOutPokal(classElemSelector) {
     var imgElem = document.querySelector(`#${classElemSelector} .pokal`);
     imgElem.style.opacity = 1;
-    imgElem.style.bottom = '400px';
+    imgElem.style.bottom = '300px';
     imgElem.style.left = '25%';
     imgElem.style.width = '150px';
     imgElem.style.marginLeft = '-75px';

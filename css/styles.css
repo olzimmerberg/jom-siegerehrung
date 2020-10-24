@@ -252,3 +252,93 @@ audio {
 audio.inactive {
     display: none;
 }
+
+
+@media only screen and (max-width: 1500px) {
+    .podest .background {
+        bottom: 100px;
+        left: 0;
+        width: 600px;
+    }
+    
+    .podest .first {
+        bottom: 275px;
+        left: 225px;
+        width: 150px;
+    }
+    
+    .podest .second {
+        bottom: 200px;
+        left: 75px;
+        width: 150px;
+    }
+    
+    .podest .third {
+        bottom: 200px;
+        left: 375px;
+        width: 150px;
+    }
+    
+    .boden .fourth {
+        bottom: 125px;
+        left: 75px;
+        width: 150px;
+    }
+    
+    .boden .fifth {
+        bottom: 125px;
+        left: 225px;
+        width: 150px;
+    }
+    
+    .boden .sixth {
+        bottom: 125px;
+        left: 375px;
+        width: 150px;
+    }
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .podest .background {
+        bottom: 100px;
+        left: 0;
+        width: 400px;
+    }
+    
+    .podest .first {
+        bottom: 225px;
+        left: 150px;
+        width: 100px;
+    }
+    
+    .podest .second {
+        bottom: 175px;
+        left: 50px;
+        width: 100px;
+    }
+    
+    .podest .third {
+        bottom: 175px;
+        left: 250px;
+        width: 100px;
+    }
+    
+    .boden .fourth {
+        bottom: 125px;
+        left: 50px;
+        width: 100px;
+    }
+    
+    .boden .fifth {
+        bottom: 125px;
+        left: 150px;
+        width: 100px;
+    }
+    
+    .boden .sixth {
+        bottom: 125px;
+        left: 250px;
+        width: 100px;
+    }
+}
