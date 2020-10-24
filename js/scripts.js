@@ -1,5 +1,5 @@
 var START_TIME = '2020-10-25 16:00:00';
-// var START_TIME = '2020-10-23 21:22:00'; // TODO: FIX
+// var START_TIME = '2020-10-24 15:23:00'; // TODO: FIX
 
 var RANGLISTE = {
     "D10": [
@@ -407,6 +407,7 @@ function ehrClass(index) {
     var className = CLASSES[index];
     console.log(`EHR ${className}`);
     if (index >= CLASSES.length) {
+        fanfareAudio.pause();
         return;
     }
     var classElemSelector = `kat-${className.toLowerCase()}`;

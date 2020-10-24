@@ -258,6 +258,15 @@ audio.inactive {
     display: none;
 }
 
+.abspann {
+    background-color: white;
+    height: 100vh;
+}
+
+.abspann div {
+    padding: 10px 15px;
+}
+
 @media only screen and (max-width: 1500px) {
     .podest .background {
         bottom: 100px;
