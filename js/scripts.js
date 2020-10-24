@@ -490,7 +490,7 @@ function resetPokal(classElemSelector) {
     imgElem.style.opacity = 0;
     imgElem.style.bottom = '100px';
     imgElem.style.left = '50%';
-    imgElem.style.width = '400px';
+    imgElem.style.width = '300px';
     imgElem.style.marginLeft = '-200px';
     imgElem.offsetHeight; // Trigger a reflow, flushing the CSS changes
     imgElem.classList.remove('notransition');
@@ -506,7 +506,7 @@ function handOutPokal(classElemSelector) {
     imgElem.style.opacity = 1;
     imgElem.style.bottom = '300px';
     imgElem.style.left = '25%';
-    imgElem.style.width = '150px';
+    imgElem.style.width = '100px';
     imgElem.style.marginLeft = '-75px';
 }
 
