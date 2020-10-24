@@ -9,7 +9,7 @@
   <meta name="author" content="Simon Hatt">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="./css/styles.css?v=1.0">
+  <link rel="stylesheet" href="./css/styles.css?v=2.0">
 </head>
 
 <body>
@@ -25,9 +25,14 @@
     </div>
   </div>
   <div id="ansprache">
-    <video id="ansprache-video" src="./video/ansprache.mp4" controls>
-      Video kann nicht abgespielt werden.
-    </video>
+    <iframe 
+        id="ansprache-iframe"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+    >
+    </iframe>
     <div class="skip-ansprache">
       <button onclick="startSiegerehrung()">überspringen</button>
     </div>
@@ -306,6 +311,6 @@
   </div>
   <audio id="countdown-audio" loop src="./audio/mixkit_epical_drums.mp3"></audio>
   <audio id="fanfare-audio" src="./audio/humanoide9000_superhero_fanfare_150.mp3"></audio>
-  <script src="./js/scripts.js"></script>
+  <script src="./js/scripts.js?v=2.0"></script>
 </body>
 </html>

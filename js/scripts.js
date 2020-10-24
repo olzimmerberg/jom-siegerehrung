@@ -1,5 +1,5 @@
-// var START_TIME = '2020-10-25 16:00:00';
-var START_TIME = '2020-10-23 21:22:00'; // TODO: FIX
+var START_TIME = '2020-10-25 16:00:00';
+// var START_TIME = '2020-10-23 21:22:00'; // TODO: FIX
 
 var RANGLISTE = {
     "D10": [
@@ -287,7 +287,7 @@ var clockElem = document.getElementById('clock');
 var countdownElem = document.getElementById('countdown');
 var countdownAudio = document.getElementById('countdown-audio');
 var anspracheElem = document.getElementById('ansprache');
-var anspracheVideo = document.getElementById('ansprache-video');
+var anspracheIframe = document.getElementById('ansprache-iframe');
 var siegerehrungElem = document.getElementById('siegerehrung');
 var fanfareAudio = document.getElementById('fanfare-audio');
 
@@ -324,6 +324,8 @@ function countDown() {
     setTimeout(countDown, miliseconds + 10);
 } 
 
+var anspracheTimeout = undefined;
+
 function startAnsprache() {
     console.log('ANSPRACHE');
     anspracheElem.style.pointerEvents = "auto";
@@ -334,14 +336,18 @@ function startAnsprache() {
     countdownAudio.setAttribute('class', 'inactive');
     fanfareAudio.setAttribute('class', 'inactive');
     countdownAudio.pause();
-    startPlaying(anspracheVideo);
-    anspracheVideo.onended = startSiegerehrung;
+    setTimeout(() => {
+        anspracheIframe.src = 'https://www.youtube.com/embed/HMoFgv0_2wQ?&autoplay=1&showinfo=0&controls=0';
+    }, 3000);
+    anspracheTimeout = setTimeout(startSiegerehrung, 290 * 1000);
 }
 
 var afterScrollTimeout = undefined;
 
 function startSiegerehrung() {
     console.log('SIEGEREHRUNG');
+    anspracheIframe.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    clearTimeout(anspracheTimeout);
     anspracheElem.style.pointerEvents = "none";
     siegerehrungElem.style.pointerEvents = "auto";
     countdownElem.style.opacity = 0;
@@ -349,7 +355,6 @@ function startSiegerehrung() {
     siegerehrungElem.style.opacity = 1;
     countdownAudio.setAttribute('class', 'inactive');
     fanfareAudio.setAttribute('class', 'active');
-    anspracheVideo.pause();
     fillInSiegerehrung();
     window.onscroll = () => {
         clearTimeout(afterScrollTimeout);
@@ -518,7 +523,7 @@ function handleNoAudio(elem, exc) {
     for (var audioElem of audioElems) {
         audioElem.controls = true;
     }
-    alert("Bitte erlaube uns, auf dieser Seite Musik abzuspielen. Klicke dazu ganz unten auf dieser Seite auf das \"Abspielen\"-Symbol");
+    alert("Bitte erlaube uns, auf dieser Seite Musik & Video abzuspielen. Klicke dazu ganz unten auf dieser Seite auf das \"Abspielen\"-Symbol");
 }
 
 function init() {
