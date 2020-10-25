@@ -387,7 +387,7 @@ function fillInSiegerehrung() {
                 if (competitorId === 'user') {
                     imgElem.src = `./img/portraits/user.png`;
                 } else {
-                    imgElem.src = `./img/portraits/${competitorId}.jpg`;
+                    imgElem.src = `./img/portraits/${competitorId}.JPG`;
                 }
                 nameElem.innerHTML = competitorData.name;
                 clubElem.innerHTML = competitorData.club;
