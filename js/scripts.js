@@ -531,6 +531,12 @@ function init() {
     var time = Date.now() - Date.parse(START_TIME);
     console.log(time);
 
+    var ua = navigator.userAgent.toLowerCase();
+    var isSafari = ua.indexOf('safari') !== -1 && ua.indexOf('chrome') !== -1 && ua.indexOf('chromium') !== -1;
+    if (isSafari) {
+        alert('Diese Rangverkündigung funktioniert mit Safari nicht korrekt! \n\nBitte verwende eine aktuelle Version von Chrome oder Firefox. Für iPhone Nutzer wird das aber auch nicht funktionieren. Sorry.');
+    }
+
     if (time <= 0) {
         startCountdown();
     } else {
